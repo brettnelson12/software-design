@@ -14,3 +14,25 @@ after { puts; }                                                             #
 
 events_table = DB.from(:events)
 rsvps_table = DB.from(:rsvps)
+
+# create the route
+
+get "/" do
+    puts events_table.all
+    # array of stuff lives in the @events
+    @events = events_table.all  
+    view "events"
+end
+
+# : is a placeholder for the ID
+
+get "/events/:id" do
+    @event = events_table.where(id: params[:id]).first
+    view "event"
+end
+
+get "/events/:id/rsvps/new" do
+    @event = events_table.where(id: params[:id]).first
+    view "new_rsvp"
+end
+

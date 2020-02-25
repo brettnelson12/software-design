@@ -1,0 +1,11 @@
+<h1>All Events</h1>
+
+<!-- create a loop for the multiple events --> 
+
+
+<% for event in @events %>
+    <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></p>
+<% end %>
+
+
+
